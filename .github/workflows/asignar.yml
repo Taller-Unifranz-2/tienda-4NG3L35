@@ -1,0 +1,32 @@
+name: Asignar el PR a su autor
+
+# Todo PR debe tener Assignee: quien hizo la tarea.
+# Si el autor no se asignó, esta Action lo asigna automáticamente.
+# El Reviewer (el docente) se pide solo gracias a .github/CODEOWNERS.
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review]
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  asignar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (pr.assignees.length > 0) {
+              core.info(`El PR #${pr.number} ya tiene Assignee.`);
+              return;
+            }
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              assignees: [pr.user.login],
+            });
+            core.info(`Asignado ${pr.user.login} al PR #${pr.number}.`);
