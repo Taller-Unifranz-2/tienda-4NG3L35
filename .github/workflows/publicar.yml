@@ -1,0 +1,55 @@
+name: Publicar en GitHub Pages
+
+# Cada push a main o dev vuelve a publicar los dos entornos:
+#   main -> https://<org>.github.io/<repo>/      (producción)
+#   dev  -> https://<org>.github.io/<repo>/dev/  (desarrollo)
+on:
+  push:
+    branches: [main, dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Armar el sitio (main en la raíz, dev en /dev/)
+        run: |
+          set -euo pipefail
+          git fetch --tags --force origin
+          rm -rf _site && mkdir -p _site
+          for rama in main dev; do
+            git rev-parse --verify --quiet "origin/$rama" >/dev/null || continue
+            destino=_site
+            [ "$rama" = dev ] && destino=_site/dev
+            mkdir -p "$destino"
+            git archive "origin/$rama" | tar -x -C "$destino" --exclude=.github
+            commit=$(git rev-parse --short "origin/$rama")
+            tag=$(git describe --tags --abbrev=0 "origin/$rama" 2>/dev/null || echo "")
+            fecha=$(TZ=America/La_Paz date '+%Y-%m-%d %H:%M')
+            printf '{"rama":"%s","commit":"%s","tag":"%s","fecha":"%s"}\n' \
+              "$rama" "$commit" "$tag" "$fecha" > "$destino/version.json"
+          done
+          ls -R _site | head -50
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

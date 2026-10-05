@@ -1,0 +1,61 @@
+:root {
+  --primario: #F05033;
+  --fondo: #F4F6F8;
+  --tarjeta: #FFFFFF;
+  --texto: #1F2A37;
+  --suave: #5B6573;
+  --ok: #1E7D4F;
+  --mal: #B42318;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+.estado { padding: 12px 20px; color: #fff; font-size: 15px; }
+.estado-ok { background: var(--ok); }
+.estado-mal { background: var(--mal); }
+.estado-titulo { font-weight: 700; }
+.estado-lista { margin: 8px 0 0; padding-left: 0; list-style: none; }
+.estado-lista li { padding: 3px 0; }
+.estado-lista code { background: rgba(255, 255, 255, .18); padding: 1px 6px; border-radius: 4px; }
+
+.cabecera { padding: 24px 20px 8px; max-width: 1100px; margin: 0 auto; }
+.cabecera h1 { margin: 0; }
+.subtitulo { color: var(--suave); margin: 4px 0 0; }
+
+.contenido {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media (max-width: 760px) { .contenido { grid-template-columns: 1fr; } }
+
+.panel { background: var(--tarjeta); border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0, 0, 0, .08); }
+.panel h2 { margin-top: 0; }
+
+.catalogo { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.producto { border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px; }
+.producto h3 { font-size: 16px; margin: 0 0 6px; }
+.precio { font-weight: 700; color: var(--primario); margin: 0 0 10px; }
+
+.boton { border: 0; border-radius: 8px; padding: 9px 14px; font-weight: 600; cursor: pointer; }
+.boton-agregar { background: var(--primario); color: #fff; width: 100%; min-height: 38px; }
+.boton-pagar { background: var(--texto); color: #fff; width: 100%; margin-top: 14px; }
+
+.carrito { padding-left: 18px; min-height: 40px; }
+.vacio { color: var(--suave); list-style: none; margin-left: -18px; }
+.linea { margin: 6px 0; }
+label { display: block; margin-top: 12px; font-size: 14px; color: var(--suave); }
+select { width: 100%; padding: 8px; margin-top: 4px; border-radius: 8px; border: 1px solid #D1D5DB; }
+.mensaje { min-height: 22px; font-weight: 600; }
+
+.pie { text-align: center; color: var(--suave); font-size: 13px; padding: 20px; }

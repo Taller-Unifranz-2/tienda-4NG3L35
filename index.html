@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tienda Unifranz</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <!-- tienda.js va primero: captura los errores de los demás módulos -->
+  <script src="js/tienda.js"></script>
+</head>
+<body>
+  <section id="estado" class="estado" aria-live="polite">
+    <div class="estado-titulo">Revisando módulos…</div>
+    <ul class="estado-lista"></ul>
+  </section>
+
+  <header class="cabecera">
+    <h1>🛍️ Tienda Unifranz</h1>
+    <p class="subtitulo">Proyecto de práctica · Taller de Git</p>
+  </header>
+
+  <main class="contenido">
+    <section class="panel">
+      <h2>Catálogo</h2>
+      <div id="catalogo" class="catalogo"></div>
+    </section>
+
+    <aside class="panel">
+      <h2>Carrito</h2>
+      <ul id="carrito" class="carrito"></ul>
+      <p class="linea">Subtotal: <strong id="subtotal">Bs 0.00</strong></p>
+      <p class="linea">Total con IVA: <strong id="total">Bs 0.00</strong></p>
+
+      <label for="metodo-pago">Método de pago</label>
+      <select id="metodo-pago"></select>
+
+      <button id="btn-pagar" class="boton boton-pagar" type="button">Pagar</button>
+      <p id="mensaje-pago" class="mensaje"></p>
+    </aside>
+  </main>
+
+  <footer class="pie">
+    <span id="version">versión local</span>
+  </footer>
+
+  <!-- Un archivo por módulo: si uno se rompe, los demás siguen funcionando -->
+</body>
+</html>
