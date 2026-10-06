@@ -18,7 +18,7 @@ function renderCarrito() {
   const lista = document.getElementById('carrito');
   lista.innerHTML = carrito.length
     ? carrito.map(function (p) { return '<li>' + p.nombre + ' · Bs ' + p.precio.toFixed(2) + '</li>'; }).join('')
-    : '';
+    : '<li class="vacio">Tu carrito está vacío</li>';
   const subtotal = subtotalCarrito();
   document.getElementById('subtotal').textContent = 'Bs ' + subtotal.toFixed(2);
   const total = typeof calcularTotal === 'function' ? calcularTotal(subtotal) : subtotal;
