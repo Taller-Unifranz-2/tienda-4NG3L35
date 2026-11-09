@@ -1,0 +1,26 @@
+name: Republicar al mergear o crear un tag
+
+# Respaldo de publicar.yml para los casos en que GitHub no dispara el push:
+#   - merges hechos con bypass de admin (los PRs propios del docente)
+#   - tags de versión (v1.0.1, v1.1.0...), para que el pie de página muestre la versión
+# Lanza "Publicar en GitHub Pages" con workflow_dispatch, que sí se permite desde otra Action.
+on:
+  pull_request:
+    types: [closed]
+    branches: [main, dev]
+  push:
+    tags: ['v*']
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  republicar:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lanzar la publicación
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run publicar.yml -R "$GITHUB_REPOSITORY" --ref main
