@@ -1,11 +1,16 @@
 # 🛍️ Tienda Unifranz · Taller de Git
 
+**Tu tienda publicada en GitHub Pages:**
+
+- Producción (`main`): https://taller-unifranz-2.github.io/tienda-4NG3L35/
+- Desarrollo (`dev`): https://taller-unifranz-2.github.io/tienda-4NG3L35/dev/
+
 Este repositorio es tuyo. Aquí practicas el flujo de trabajo del equipo con un proyecto real que se publica solo en GitHub Pages.
 
 | Rama | Entorno | URL |
 |---|---|---|
-| `main` | Producción | `https://taller-unifranz-2.github.io/<este-repo>/` |
-| `dev` | Desarrollo | `https://taller-unifranz-2.github.io/<este-repo>/dev/` |
+| `main` | Producción | `https://taller-unifranz-2.github.io/tienda-4NG3L35/` |
+| `dev` | Desarrollo | `https://taller-unifranz-2.github.io/tienda-4NG3L35/dev/` |
 
 Cada vez que algo llega a `main` o `dev`, GitHub Actions vuelve a publicar la página en 1 minuto, más o menos. Recarga con **Ctrl + F5** y revisa el **commit** que aparece en la barra de arriba: así sabes que ves la última versión.
 
@@ -27,8 +32,8 @@ La barra de arriba es el monitor de la tienda:
 
 1. Clona por SSH:
    ```bash
-   git clone git@github.com:Taller-Unifranz-2/<este-repo>.git
-   cd <este-repo>
+   git clone git@github.com:Taller-Unifranz-2/tienda-4NG3L35.git
+   cd tienda-4NG3L35
    git switch dev
    ```
 2. Crea tu rama desde `dev`:
