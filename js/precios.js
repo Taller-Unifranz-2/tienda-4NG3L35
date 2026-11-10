@@ -7,7 +7,7 @@ function calcularTotal(subtotal) {
 }
 
 function mostrarPrecio(n) {
-  return 'Bs ' + n.toFixed(2);
+  return formatearMoneda(n);
 }
 
 function renderCatalogo() {
