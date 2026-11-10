@@ -58,5 +58,5 @@ La barra de arriba es el monitor de la tienda:
 
 ## Parte 2 · Producción rota
 
-Espera la indicación del docente. 😈
+Producción está caída. Lee el reporte en [INCIDENTE.md](INCIDENTE.md) y sigue las pistas.
 
