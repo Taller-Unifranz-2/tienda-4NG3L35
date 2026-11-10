@@ -1,6 +1,6 @@
 // Carrito de compras
 
-const TEXTO_BOTON = 'Agregar';
+const TEXTO_BOTON = 'Agregar al carrito';
 
 const carrito = [];
 
