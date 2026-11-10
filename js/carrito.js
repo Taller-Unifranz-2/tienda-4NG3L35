@@ -1,6 +1,10 @@
 // Carrito de compras
 
+<<<<<<< HEAD
 const TEXTO_BOTON = 'Agregar al carrito';
+=======
+const TEXTO_BOTON = 'Añadir 🛒';
+>>>>>>> feature/tsk-carrito
 
 const carrito = [];
 
