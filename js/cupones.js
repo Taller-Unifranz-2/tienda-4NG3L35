@@ -1,4 +1,4 @@
-// Cupones de descuento
+// Cupones de descuento (aún no se usan en la tienda)
 const CUPONES = {
   UNIFRANZ10: 0.10,
   TALLER20: 0.20
