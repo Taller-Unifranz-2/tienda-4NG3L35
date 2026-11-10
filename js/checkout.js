@@ -1,8 +1,5 @@
 // Confirmación de la compra
 
-// TEMPORAL: no subir a producción
-throw new Error('pagos desactivados (debug)');
-
 function pagar() {
   const mensaje = document.getElementById('mensaje-pago');
   if (!carrito.length) {
