@@ -6,5 +6,5 @@ const CUPONES = {
 
 function aplicarCupon(subtotal, codigo) {
   const descuento = CUPONES[codigo] || 0;
-  return subtotal * (1 - descuento);
+  return redondear(subtotal * (1 - descuento));
 }
